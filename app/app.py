@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 
 # Cargar modelo
-model = keras.models.load_model(
+model = tf.keras.models.load_model(
     "modelo_perros.keras",
     compile=False
 )
