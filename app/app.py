@@ -5,10 +5,10 @@ from PIL import Image
 
 # Cargar modelo
 model = tf.keras.models.load_model(
-    "app/modelo_perros.keras",
-    compile=False
+    "modelo_perros_fixed.keras",
+    compile=False,
+    safe_mode=False
 )
-
 # Lista de razas en el mismo orden que se entrenó
 razas = [
     'Chihuahua', 'Japanese spaniel', 'Maltese dog', 'Pekinese', 'Shih-Tzu',
