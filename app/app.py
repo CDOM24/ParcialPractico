@@ -1,6 +1,7 @@
 import streamlit as st
 import keras   # 🔥 cambio importante
 import numpy as np
+import tensorflow as tf
 from PIL import Image
 
 # Cargar modelo
