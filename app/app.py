@@ -5,9 +5,8 @@ from PIL import Image
 
 # Cargar modelo
 model = tf.keras.models.load_model(
-    "modelo_perros_fixed.keras",
-    compile=False,
-    safe_mode=False
+    "modelo_perros.keras",
+    compile=False
 )
 # Lista de razas en el mismo orden que se entrenó
 razas = [
