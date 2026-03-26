@@ -1,14 +1,15 @@
 import streamlit as st
-import tensorflow as tf
+import keras   # 🔥 cambio importante
 import numpy as np
 from PIL import Image
 
 # Cargar modelo
-model = tf.keras.models.load_model(
+model = keras.models.load_model(
     "modelo_perros.keras",
     compile=False
 )
-# Lista de razas en el mismo orden que se entrenó
+
+# Lista de razas
 razas = [
     'Chihuahua', 'Japanese spaniel', 'Maltese dog', 'Pekinese', 'Shih-Tzu',
     'Blenheim spaniel', 'Papillon', 'Toy terrier', 'Rhodesian ridgeback',
@@ -49,7 +50,7 @@ if imagen_subida is not None:
     img = Image.open(imagen_subida).convert("RGB")
     st.image(img, caption="Imagen cargada", use_column_width=True)
 
-    # Preprocesar igual que en entrenamiento
+    # Preprocesamiento
     img_resized = img.resize((128, 128))
     img_array = np.array(img_resized) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
@@ -58,7 +59,7 @@ if imagen_subida is not None:
     prediccion = model.predict(img_array)
     probabilidades = prediccion[0]
 
-    # Top 5 razas
+    # Top 5
     top5_idx = np.argsort(probabilidades)[::-1][:5]
 
     st.subheader("🏆 Raza más probable")
